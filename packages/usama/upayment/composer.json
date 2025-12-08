@@ -1,0 +1,15 @@
+{
+    "name": "usama/myfatoorah",
+    "description": "my fatoorah implementation",
+    "type": "library",
+    "license": "MTI",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "authors": [
+        {
+            "name": "uusa35",
+            "email": "uusa35@gmail.com"
+        }
+    ],
+}
