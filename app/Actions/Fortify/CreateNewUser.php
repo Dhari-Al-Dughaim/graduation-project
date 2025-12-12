@@ -29,29 +29,30 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'mobile' => ['required', 'string', 'max:50'],
             'password' => $this->passwordRules(),
-            'phone' => ['nullable', 'string', 'max:50'],
         ])->validate();
+
+        $mobile = $input['mobile'];
 
         $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
+            'mobile' => $mobile,
             'password' => $input['password'],
         ]);
 
-        $phone = $input['phone'] ?? null;
+        // Create customer record with mobile
+        Customer::create([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $mobile,
+            'whatsapp_number' => $mobile,
+        ]);
 
-        if ($phone) {
-            Customer::create([
-                'user_id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'phone' => $phone,
-                'whatsapp_number' => $phone,
-            ]);
-
-            SendWelcomeWhatsapp::dispatchSync($user, $phone);
-        }
+        // Send welcome WhatsApp message
+        SendWelcomeWhatsapp::dispatchSync($user, $mobile);
 
         return $user;
     }

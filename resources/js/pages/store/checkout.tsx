@@ -38,9 +38,9 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
     const form = useForm({
         customer: {
             name: user?.name ?? '',
-            phone: '',
+            phone: user?.mobile ?? '',
             email: user?.email ?? '',
-            whatsapp_number: '',
+            whatsapp_number: user?.mobile ?? '',
             locale,
         },
         delivery_address: '',
