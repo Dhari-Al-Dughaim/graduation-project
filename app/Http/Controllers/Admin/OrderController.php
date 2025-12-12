@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateOrderStatusRequest;
+use App\Jobs\SendOrderStatusWhatsAppNotification;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -58,8 +59,11 @@ class OrderController extends Controller
     public function updateStatus(UpdateOrderStatusRequest $request, Order $order): RedirectResponse
     {
         $data = $request->validated();
+        $oldStatus = $order->status;
+        $newStatus = $data['status'];
+
         $order->update([
-            'status' => $data['status'],
+            'status' => $newStatus,
             'payment_status' => $data['payment_status'] ?? $order->payment_status,
             'delivery_eta_minutes' => $data['delivery_eta_minutes'] ?? $order->delivery_eta_minutes,
         ]);
@@ -68,6 +72,11 @@ class OrderController extends Controller
             $order->deliveryTracking->update([
                 'status' => $order->status,
             ]);
+        }
+
+        // Send WhatsApp notification if status changed
+        if ($oldStatus !== $newStatus) {
+            SendOrderStatusWhatsAppNotification::dispatch($order, $newStatus, $oldStatus);
         }
 
         return back();
