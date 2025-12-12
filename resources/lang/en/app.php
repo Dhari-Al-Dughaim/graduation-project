@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'app_name' => 'Burger Resturant',
+    'app_name' => 'Ai Powered Resturant',
     'language' => 'Language',
     'arabic' => 'Arabic',
     'english' => 'English',

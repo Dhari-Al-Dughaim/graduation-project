@@ -40,7 +40,9 @@ export default function AdminOrderInvoice({ order }: { order: InvoiceOrder }) {
                 <CardContent className="space-y-6 text-sm">
                     <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                         <div>
-                            <p className="font-semibold">Burger Resturant</p>
+                            <p className="font-semibold">
+                                Ai Powered Restaurant
+                            </p>
                             <p className="text-xs text-neutral-500 dark:text-neutral-400">
                                 Status: {order.status} · Payment:{' '}
                                 {order.payment_status}
@@ -54,9 +56,9 @@ export default function AdminOrderInvoice({ order }: { order: InvoiceOrder }) {
                         </div>
                     </div>
 
-                    <div className="grid gap-4 rounded-lg border border-neutral-200 bg-neutral-50/70 p-3 dark:border-neutral-700 dark:bg-neutral-900/60 md:grid-cols-2">
+                    <div className="grid gap-4 rounded-lg border border-neutral-200 bg-neutral-50/70 p-3 md:grid-cols-2 dark:border-neutral-700 dark:bg-neutral-900/60">
                         <div>
-                            <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                            <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
                                 Customer
                             </p>
                             <p className="mt-1 text-sm font-medium">
@@ -69,7 +71,7 @@ export default function AdminOrderInvoice({ order }: { order: InvoiceOrder }) {
                             )}
                         </div>
                         <div>
-                            <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                            <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
                                 Total
                             </p>
                             <p className="mt-1 text-sm">
@@ -106,9 +108,7 @@ export default function AdminOrderInvoice({ order }: { order: InvoiceOrder }) {
                                             {item.quantity}
                                         </td>
                                         <td className="px-3 py-2 text-right">
-                                            {Number(item.unit_price).toFixed(
-                                                2,
-                                            )}{' '}
+                                            {Number(item.unit_price).toFixed(2)}{' '}
                                             KWD
                                         </td>
                                         <td className="px-3 py-2 text-right">
@@ -147,4 +147,3 @@ export default function AdminOrderInvoice({ order }: { order: InvoiceOrder }) {
         </AppLayout>
     );
 }
-
