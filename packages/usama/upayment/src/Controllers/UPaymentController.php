@@ -3,6 +3,7 @@
 namespace Usama\Upayment\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendOrderConfirmationWhatsapp;
 use App\Models\Order;
 use App\Models\Payment;
 use Carbon\Carbon;
@@ -109,6 +110,9 @@ class UPaymentController extends Controller
                     ],
                 ]);
             }
+
+            // Send WhatsApp order confirmation notification
+            SendOrderConfirmationWhatsapp::dispatchSync($order);
 
             return Inertia::render('store/order-success', [
                 'order' => $order->load(['customer', 'items.meal', 'payment']),
