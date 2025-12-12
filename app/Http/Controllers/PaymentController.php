@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendOrderConfirmationWhatsapp;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,9 +30,13 @@ class PaymentController extends Controller
             'status' => $status === 'paid' ? 'confirmed' : 'pending',
         ]);
 
-        return $status === 'paid'
-            ? redirect()->route('orders.success', $order)
-            : redirect()->route('orders.failure', $order);
+        if ($status === 'paid') {
+            SendOrderConfirmationWhatsapp::dispatchSync($order);
+
+            return redirect()->route('orders.success', $order);
+        }
+
+        return redirect()->route('orders.failure', $order);
     }
 
     public function success(Order $order): Response
