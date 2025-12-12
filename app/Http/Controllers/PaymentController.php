@@ -31,6 +31,8 @@ class PaymentController extends Controller
         ]);
 
         if ($status === 'paid') {
+            // Load customer relationship for WhatsApp notification
+            $order->load('customer');
             SendOrderConfirmationWhatsapp::dispatchSync($order);
 
             return redirect()->route('orders.success', $order);

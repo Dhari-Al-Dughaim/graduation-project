@@ -22,6 +22,9 @@ class SendOrderStatusWhatsAppNotification implements ShouldQueue
 
     public function handle(WhatsappService $whatsappService): void
     {
+        // Ensure customer relationship is loaded
+        $this->order->loadMissing('customer');
+
         $phone = $this->order->whatsapp_number
             ?? $this->order->customer?->whatsapp_number
             ?? $this->order->customer?->phone;

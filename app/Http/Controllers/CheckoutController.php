@@ -37,8 +37,9 @@ class CheckoutController extends Controller
     {
         $data = $request->validated();
         $locale = $data['customer']['locale'] ?? app()->getLocale();
+        $whatsappNumber = $data['customer']['whatsapp_number'] ?? $data['customer']['phone'];
 
-        $customer = Customer::firstOrCreate(
+        $customer = Customer::updateOrCreate(
             [
                 'email' => $data['customer']['email'] ?? null,
                 'phone' => $data['customer']['phone'],
@@ -46,7 +47,7 @@ class CheckoutController extends Controller
             [
                 'name' => $data['customer']['name'],
                 'preferred_locale' => $locale,
-                'whatsapp_number' => $data['customer']['whatsapp_number'] ?? $data['customer']['phone'],
+                'whatsapp_number' => $whatsappNumber,
                 'address_line' => $data['delivery_address'] ?? null,
                 'city' => $data['delivery_city'] ?? null,
                 'notes' => $data['delivery_notes'] ?? null,
@@ -60,7 +61,7 @@ class CheckoutController extends Controller
             'payment_status' => 'unpaid',
             'currency' => 'KWD',
             'locale' => $locale,
-            'whatsapp_number' => $customer->whatsapp_number,
+            'whatsapp_number' => $whatsappNumber,
             'delivery_address' => $data['delivery_address'] ?? $customer->address_line,
             'delivery_city' => $data['delivery_city'] ?? $customer->city,
             'delivery_notes' => $data['delivery_notes'] ?? null,

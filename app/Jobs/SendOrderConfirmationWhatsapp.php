@@ -20,7 +20,12 @@ class SendOrderConfirmationWhatsapp
 
     public function handle(WhatsappService $whatsappService): void
     {
-        $phone = $this->order->whatsapp_number ?? $this->order->customer?->whatsapp_number ?? $this->order->customer?->phone;
+        // Ensure customer relationship is loaded
+        $this->order->loadMissing('customer');
+
+        $phone = $this->order->whatsapp_number
+            ?? $this->order->customer?->whatsapp_number
+            ?? $this->order->customer?->phone;
 
         if (!$phone) {
             return;
