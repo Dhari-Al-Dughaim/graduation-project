@@ -19,7 +19,7 @@ export default function AuthSplitLayout({
     return (
         <div className="relative grid h-dvh flex-col items-center justify-center overflow-hidden px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
             <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#008789] via-[#006b6d] to-cyan-900" />
                 <div className="pointer-events-none absolute inset-0 bg-pattern-grid opacity-20" />
                 <Link
                     href={home()}
@@ -45,8 +45,8 @@ export default function AuthSplitLayout({
                 {/* Decorative background for right panel */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-radial opacity-50" />
                 <div className="pointer-events-none absolute inset-0 bg-pattern-dots opacity-30" />
-                <div className="bg-glow-orb absolute -top-20 -right-20 h-56 w-56 bg-amber-300/20 dark:bg-amber-500/10" />
-                <div className="bg-glow-orb absolute -bottom-20 -left-20 h-48 w-48 bg-orange-300/15 dark:bg-orange-500/8" style={{ animationDelay: '3s' }} />
+                <div className="bg-glow-orb absolute -top-20 -right-20 h-56 w-56 bg-cyan-300/20 dark:bg-[#00a0a3]/10" />
+                <div className="bg-glow-orb absolute -bottom-20 -left-20 h-48 w-48 bg-cyan-400/15 dark:bg-cyan-600/8" style={{ animationDelay: '3s' }} />
                 <div className="relative z-10 mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <Link
                         href={home()}

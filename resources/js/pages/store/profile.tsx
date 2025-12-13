@@ -48,7 +48,7 @@ export default function Profile() {
                 <Card>
                     <CardHeader className="pb-4">
                         <div className="flex items-center gap-4">
-                            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-2xl font-bold text-white shadow-lg">
+                            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-[#00a0a3] text-2xl font-bold text-white shadow-lg">
                                 {user.name.charAt(0).toUpperCase()}
                             </div>
                             <div>
@@ -128,7 +128,7 @@ export default function Profile() {
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="bg-amber-600 hover:bg-amber-700"
+                                    className="bg-[#00a0a3] hover:bg-[#008789]"
                                 >
                                     {processing ? t('saving') : t('save')}
                                 </Button>

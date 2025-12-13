@@ -73,7 +73,7 @@ type OrderDetails = {
 const statusConfig: Record<string, { icon: React.ElementType; color: string; bgColor: string; label: string; labelAr: string }> = {
     pending: { icon: Clock, color: 'text-yellow-600', bgColor: 'bg-yellow-100 dark:bg-yellow-900/30', label: 'Pending', labelAr: 'قيد الانتظار' },
     confirmed: { icon: CheckCircle2, color: 'text-blue-600', bgColor: 'bg-blue-100 dark:bg-blue-900/30', label: 'Confirmed', labelAr: 'تم التأكيد' },
-    preparing: { icon: ChefHat, color: 'text-orange-600', bgColor: 'bg-orange-100 dark:bg-orange-900/30', label: 'Preparing', labelAr: 'جاري التحضير' },
+    preparing: { icon: ChefHat, color: 'text-cyan-700', bgColor: 'bg-teal-100 dark:bg-teal-900/30', label: 'Preparing', labelAr: 'جاري التحضير' },
     ready: { icon: Package, color: 'text-purple-600', bgColor: 'bg-purple-100 dark:bg-purple-900/30', label: 'Ready', labelAr: 'جاهز' },
     out_for_delivery: { icon: Truck, color: 'text-indigo-600', bgColor: 'bg-indigo-100 dark:bg-indigo-900/30', label: 'Out for Delivery', labelAr: 'في الطريق' },
     delivered: { icon: CheckCircle2, color: 'text-green-600', bgColor: 'bg-green-100 dark:bg-green-900/30', label: 'Delivered', labelAr: 'تم التوصيل' },
@@ -118,7 +118,7 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                 <div className="mb-8 text-center">
                     <div className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center">
                         <div className={`absolute inset-0 animate-pulse rounded-full ${statusInfo.bgColor}`} />
-                        <div className={`relative flex h-20 w-20 items-center justify-center rounded-full ${isCancelled ? 'bg-gradient-to-br from-red-400 to-red-500' : 'bg-gradient-to-br from-amber-400 to-orange-500'} shadow-lg ${isCancelled ? 'shadow-red-500/30' : 'shadow-amber-500/30'}`}>
+                        <div className={`relative flex h-20 w-20 items-center justify-center rounded-full ${isCancelled ? 'bg-gradient-to-br from-red-400 to-red-500' : 'bg-gradient-to-br from-cyan-400 to-cyan-600'} shadow-lg ${isCancelled ? 'shadow-red-500/30' : 'shadow-[#00a0a3]/30'}`}>
                             <FileText className="h-10 w-10 text-white" />
                         </div>
                     </div>
@@ -132,14 +132,14 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
 
                 {/* Order Number Banner */}
                 <Card className="mb-6 overflow-hidden border-0 shadow-xl">
-                    <div className={`${isCancelled ? 'bg-gradient-to-r from-red-500 to-rose-500' : 'bg-gradient-to-r from-amber-500 to-orange-500'} px-6 py-4 text-white`}>
+                    <div className={`${isCancelled ? 'bg-gradient-to-r from-red-500 to-rose-500' : 'bg-gradient-to-r from-[#00a0a3] to-cyan-600'} px-6 py-4 text-white`}>
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className={`text-sm ${isCancelled ? 'text-red-100' : 'text-amber-100'}`}>{t('order_number')}</p>
+                                <p className={`text-sm ${isCancelled ? 'text-red-100' : 'text-cyan-100'}`}>{t('order_number')}</p>
                                 <p className="text-2xl font-bold">#{order.order_number}</p>
                             </div>
                             <div className="text-right">
-                                <p className={`text-sm ${isCancelled ? 'text-red-100' : 'text-amber-100'}`}>{t('total')}</p>
+                                <p className={`text-sm ${isCancelled ? 'text-red-100' : 'text-cyan-100'}`}>{t('total')}</p>
                                 <p className="text-2xl font-bold">{total.toFixed(2)} {t('currency_code')}</p>
                             </div>
                         </div>
@@ -308,7 +308,7 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                 <Card className="mb-6 border-0 bg-white/80 shadow-lg backdrop-blur-sm dark:bg-neutral-900/80">
                     <CardContent className="p-6">
                         <h3 className="mb-4 flex items-center gap-2 font-semibold text-neutral-900 dark:text-white">
-                            <ShoppingBag className="h-5 w-5 text-amber-500" />
+                            <ShoppingBag className="h-5 w-5 text-[#00a0a3]" />
                             {t('order_items')}
                         </h3>
                         <div className="divide-y divide-neutral-200/50 rounded-lg border border-neutral-200/50 dark:divide-neutral-700/50 dark:border-neutral-700/50">
@@ -321,8 +321,8 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                                             className="h-16 w-16 rounded-lg object-cover shadow-md"
                                         />
                                     ) : (
-                                        <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-900/30">
-                                            <Package className="h-8 w-8 text-amber-600" />
+                                        <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-cyan-100 dark:bg-cyan-900/30">
+                                            <Package className="h-8 w-8 text-[#00a0a3]" />
                                         </div>
                                     )}
                                     <div className="flex-1">
@@ -330,7 +330,7 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                                             {getMealName(item.meal)}
                                         </p>
                                         <p className="text-sm text-muted-foreground">
-                                            <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">
+                                            <span className="inline-flex items-center rounded-full bg-cyan-100 px-2 py-0.5 text-xs font-medium text-[#006b6d] dark:bg-cyan-900/50 dark:text-cyan-300">
                                                 x{item.quantity}
                                             </span>
                                             <span className="mx-2">@</span>
@@ -345,11 +345,11 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                         </div>
 
                         {/* Total */}
-                        <div className="mt-4 flex items-center justify-between rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 p-4 dark:from-amber-900/20 dark:to-orange-900/20">
+                        <div className="mt-4 flex items-center justify-between rounded-lg bg-gradient-to-r from-cyan-50 to-teal-50 p-4 dark:from-cyan-900/20 dark:to-teal-900/20">
                             <span className="text-lg font-medium text-neutral-700 dark:text-neutral-300">
                                 {t('total')}
                             </span>
-                            <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                            <span className="text-2xl font-bold text-[#00a0a3] dark:text-cyan-400">
                                 {total.toFixed(2)} {t('currency_code')}
                             </span>
                         </div>
@@ -375,7 +375,7 @@ export default function OrderDetailsPage({ order }: { order: OrderDetails }) {
                 <div className="flex flex-col gap-3 sm:flex-row">
                     <Button
                         asChild
-                        className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 py-6 text-base font-semibold text-white shadow-lg hover:from-amber-600 hover:to-orange-600"
+                        className="flex-1 bg-gradient-to-r from-[#00a0a3] to-cyan-600 py-6 text-base font-semibold text-white shadow-lg hover:from-[#00a0a3] hover:to-cyan-700"
                     >
                         <Link href={`/orders/${order.id}/track`}>
                             <MapPin className="mr-2 h-5 w-5" />

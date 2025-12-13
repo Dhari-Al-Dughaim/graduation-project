@@ -32,7 +32,7 @@ type OrderListItem = {
 const statusConfig: Record<string, { icon: React.ElementType; color: string; bgColor: string; textColor: string; label: string; labelAr: string }> = {
     pending: { icon: Clock, color: 'border-yellow-500', bgColor: 'bg-yellow-100 dark:bg-yellow-900/30', textColor: 'text-yellow-600 dark:text-yellow-400', label: 'Pending', labelAr: 'قيد الانتظار' },
     confirmed: { icon: CheckCircle2, color: 'border-blue-500', bgColor: 'bg-blue-100 dark:bg-blue-900/30', textColor: 'text-blue-600 dark:text-blue-400', label: 'Confirmed', labelAr: 'تم التأكيد' },
-    preparing: { icon: ChefHat, color: 'border-orange-500', bgColor: 'bg-orange-100 dark:bg-orange-900/30', textColor: 'text-orange-600 dark:text-orange-400', label: 'Preparing', labelAr: 'جاري التحضير' },
+    preparing: { icon: ChefHat, color: 'border-cyan-600', bgColor: 'bg-teal-100 dark:bg-teal-900/30', textColor: 'text-cyan-700 dark:text-cyan-500', label: 'Preparing', labelAr: 'جاري التحضير' },
     ready: { icon: Package, color: 'border-purple-500', bgColor: 'bg-purple-100 dark:bg-purple-900/30', textColor: 'text-purple-600 dark:text-purple-400', label: 'Ready', labelAr: 'جاهز' },
     out_for_delivery: { icon: Truck, color: 'border-indigo-500', bgColor: 'bg-indigo-100 dark:bg-indigo-900/30', textColor: 'text-indigo-600 dark:text-indigo-400', label: 'Out for Delivery', labelAr: 'في الطريق' },
     delivered: { icon: CheckCircle2, color: 'border-green-500', bgColor: 'bg-green-100 dark:bg-green-900/30', textColor: 'text-green-600 dark:text-green-400', label: 'Delivered', labelAr: 'تم التوصيل' },
@@ -75,8 +75,8 @@ export default function MyOrders({ orders }: { orders: { data: OrderListItem[] }
                 {/* Header */}
                 <div className="mb-8 text-center">
                     <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center">
-                        <div className="absolute inset-0 animate-pulse rounded-full bg-amber-100 dark:bg-amber-900/30" />
-                        <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 shadow-lg shadow-amber-500/30">
+                        <div className="absolute inset-0 animate-pulse rounded-full bg-cyan-100 dark:bg-cyan-900/30" />
+                        <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-lg shadow-[#00a0a3]/30">
                             <ShoppingBag className="h-8 w-8 text-white" />
                         </div>
                     </div>
@@ -103,7 +103,7 @@ export default function MyOrders({ orders }: { orders: { data: OrderListItem[] }
                                     ? 'ابدأ بتصفح قائمتنا الشهية واطلب وجبتك المفضلة!'
                                     : 'Start browsing our delicious menu and place your first order!'}
                             </p>
-                            <Button asChild className="bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600">
+                            <Button asChild className="bg-gradient-to-r from-[#00a0a3] to-cyan-600 text-white shadow-lg hover:from-[#00a0a3] hover:to-cyan-700">
                                 <Link href="/">
                                     {t('start_shopping')}
                                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -143,7 +143,7 @@ export default function MyOrders({ orders }: { orders: { data: OrderListItem[] }
                                                         </div>
                                                     </div>
                                                     <div className="text-right">
-                                                        <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                                        <p className="text-2xl font-bold text-[#00a0a3] dark:text-cyan-400">
                                                             {Number(order.total).toFixed(2)}
                                                         </p>
                                                         <p className="text-sm text-muted-foreground">{t('currency_code')}</p>
@@ -184,7 +184,7 @@ export default function MyOrders({ orders }: { orders: { data: OrderListItem[] }
                                             <div className="flex flex-row items-center gap-2 border-t border-neutral-200/50 bg-neutral-50/50 p-4 dark:border-neutral-700/50 dark:bg-neutral-800/30 md:flex-col md:justify-center md:border-l md:border-t-0">
                                                 <Button
                                                     asChild
-                                                    className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow hover:from-amber-600 hover:to-orange-600 md:w-full md:flex-none"
+                                                    className="flex-1 bg-gradient-to-r from-[#00a0a3] to-cyan-600 text-white shadow hover:from-[#00a0a3] hover:to-cyan-700 md:w-full md:flex-none"
                                                 >
                                                     <Link href={`/orders/${order.id}/track`}>
                                                         <MapPin className="mr-2 h-4 w-4" />

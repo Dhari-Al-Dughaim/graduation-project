@@ -75,8 +75,8 @@ const statusConfig: Record<
     },
     preparing: {
         icon: ChefHat,
-        color: 'text-orange-600',
-        bgColor: 'bg-orange-100 dark:bg-orange-900/30',
+        color: 'text-cyan-700',
+        bgColor: 'bg-teal-100 dark:bg-teal-900/30',
     },
     ready: {
         icon: Package,
@@ -174,10 +174,10 @@ export default function TrackOrderLookup() {
         <StoreLayout title={t('order_tracking')}>
             <div className="space-y-6">
                 {/* Search Card */}
-                <Card className="mx-auto max-w-md border-amber-200/50 bg-white/80 backdrop-blur-sm dark:border-amber-800/30 dark:bg-neutral-900/80">
+                <Card className="mx-auto max-w-md border-cyan-200/50 bg-white/80 backdrop-blur-sm dark:border-[#006b6d]/30 dark:bg-neutral-900/80">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
-                            <Search className="h-5 w-5 text-amber-600" />
+                            <Search className="h-5 w-5 text-[#00a0a3]" />
                             {t('order_tracking')}
                         </CardTitle>
                     </CardHeader>
@@ -234,7 +234,7 @@ export default function TrackOrderLookup() {
                 {order && (
                     <div className="mx-auto max-w-2xl space-y-4">
                         {/* Status Card */}
-                        <Card className="overflow-hidden border-0 bg-gradient-to-r from-amber-50 to-orange-50 shadow-lg dark:from-neutral-900 dark:to-neutral-800">
+                        <Card className="overflow-hidden border-0 bg-gradient-to-r from-cyan-50 to-teal-50 shadow-lg dark:from-neutral-900 dark:to-neutral-800">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center justify-between">
                                     <CardTitle className="text-lg">
@@ -265,7 +265,7 @@ export default function TrackOrderLookup() {
                                 <div className="grid gap-3 sm:grid-cols-2">
                                     {order.delivery_tracking?.eta && (
                                         <div className="flex items-center gap-2 rounded-lg bg-white/60 p-3 dark:bg-neutral-800/60">
-                                            <Clock className="h-4 w-4 text-amber-600" />
+                                            <Clock className="h-4 w-4 text-[#00a0a3]" />
                                             <div>
                                                 <p className="text-xs text-muted-foreground">
                                                     Estimated Arrival
@@ -281,7 +281,7 @@ export default function TrackOrderLookup() {
                                     )}
                                     {order.delivery_tracking?.location && (
                                         <div className="flex items-center gap-2 rounded-lg bg-white/60 p-3 dark:bg-neutral-800/60">
-                                            <MapPin className="h-4 w-4 text-amber-600" />
+                                            <MapPin className="h-4 w-4 text-[#00a0a3]" />
                                             <div>
                                                 <p className="text-xs text-muted-foreground">
                                                     Current Location
@@ -297,7 +297,7 @@ export default function TrackOrderLookup() {
                                     )}
                                     {order.delivery_address && (
                                         <div className="flex items-center gap-2 rounded-lg bg-white/60 p-3 sm:col-span-2 dark:bg-neutral-800/60">
-                                            <Truck className="h-4 w-4 text-amber-600" />
+                                            <Truck className="h-4 w-4 text-[#00a0a3]" />
                                             <div>
                                                 <p className="text-xs text-muted-foreground">
                                                     Delivery Address
@@ -340,7 +340,7 @@ export default function TrackOrderLookup() {
                                                     {getMealName(item)}
                                                 </p>
                                                 <p className="text-xs text-muted-foreground">
-                                                    <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">
+                                                    <span className="inline-flex items-center rounded-full bg-cyan-100 px-2 py-0.5 font-medium text-[#006b6d] dark:bg-cyan-900/50 dark:text-cyan-300">
                                                         x{item.quantity}
                                                     </span>
                                                     <span className="ml-2">
@@ -365,7 +365,7 @@ export default function TrackOrderLookup() {
                                     <span className="font-medium text-muted-foreground">
                                         {t('order_total')}
                                     </span>
-                                    <span className="text-lg font-bold text-amber-600">
+                                    <span className="text-lg font-bold text-[#00a0a3]">
                                         {Number(order.total).toFixed(2)}{' '}
                                         {t('currency_code')}
                                     </span>

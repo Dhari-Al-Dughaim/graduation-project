@@ -78,24 +78,24 @@ export default function OrderFailure({ order, errorMessage }: { order: Order; er
                         {/* What to do next */}
                         <div className="mb-6">
                             <h3 className="mb-3 flex items-center gap-2 font-semibold text-neutral-900 dark:text-white">
-                                <HelpCircle className="h-5 w-5 text-amber-500" />
+                                <HelpCircle className="h-5 w-5 text-[#00a0a3]" />
                                 {t('what_to_do_next')}
                             </h3>
                             <ul className="space-y-2 text-sm text-muted-foreground">
                                 <li className="flex items-start gap-2">
-                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100 text-xs font-bold text-[#00a0a3] dark:bg-cyan-900/30 dark:text-cyan-400">
                                         1
                                     </span>
                                     {t('check_card_details')}
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100 text-xs font-bold text-[#00a0a3] dark:bg-cyan-900/30 dark:text-cyan-400">
                                         2
                                     </span>
                                     {t('ensure_sufficient_funds')}
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                                    <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100 text-xs font-bold text-[#00a0a3] dark:bg-cyan-900/30 dark:text-cyan-400">
                                         3
                                     </span>
                                     {t('try_different_payment')}
@@ -121,7 +121,7 @@ export default function OrderFailure({ order, errorMessage }: { order: Order; er
                 <div className="flex flex-col gap-3 sm:flex-row">
                     <Button
                         asChild
-                        className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 py-6 text-base font-semibold text-white shadow-lg hover:from-amber-600 hover:to-orange-600"
+                        className="flex-1 bg-gradient-to-r from-[#00a0a3] to-cyan-600 py-6 text-base font-semibold text-white shadow-lg hover:from-[#00a0a3] hover:to-cyan-700"
                     >
                         <Link href={`/orders/${order.id}/payment`}>
                             <RefreshCw className="mr-2 h-5 w-5" />

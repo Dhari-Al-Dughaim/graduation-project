@@ -60,13 +60,13 @@ export default function Home({ meals = [], locale }: { meals: Meal[]; locale: st
             <Head title={t('customer_portal')} />
 
             {/* Hero Section with animation */}
-            <section className="animate-fade-in-up mb-8 overflow-hidden rounded-2xl border border-amber-100 bg-gradient-to-r from-white via-amber-50/60 to-amber-100/70 shadow-sm dark:border-neutral-800 dark:bg-gradient-to-r dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-950">
+            <section className="animate-fade-in-up mb-8 overflow-hidden rounded-2xl border border-[#00a0a3]/20 bg-gradient-to-r from-white via-cyan-50/60 to-cyan-100/70 shadow-sm dark:border-neutral-800 dark:bg-gradient-to-r dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-950">
                 <div className="relative px-6 py-6 md:px-10 md:py-8">
-                    <PlaceholderPattern className="pointer-events-none absolute -right-10 -top-8 h-40 w-56 text-amber-200/80 mix-blend-multiply dark:text-amber-500/40" />
-                    <PlaceholderPattern className="pointer-events-none absolute -left-16 bottom-0 h-32 w-40 text-amber-100/80 mix-blend-multiply dark:text-amber-500/25" />
+                    <PlaceholderPattern className="pointer-events-none absolute -right-10 -top-8 h-40 w-56 text-[#00a0a3]/30 mix-blend-multiply dark:text-[#00a0a3]/40" />
+                    <PlaceholderPattern className="pointer-events-none absolute -left-16 bottom-0 h-32 w-40 text-[#00a0a3]/20 mix-blend-multiply dark:text-[#00a0a3]/25" />
                     <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <div>
-                            <p className="animate-fade-in text-xs font-semibold uppercase tracking-[0.3em] text-amber-600 dark:text-amber-400">
+                            <p className="animate-fade-in text-xs font-semibold uppercase tracking-[0.3em] text-[#00a0a3] dark:text-cyan-400">
                                 {t('app_name')}
                             </p>
                             <h1 className="animate-fade-in-up animation-delay-100 mt-1 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
@@ -91,14 +91,14 @@ export default function Home({ meals = [], locale }: { meals: Meal[]; locale: st
                     meals.map((meal, index) => (
                         <Card
                             key={meal.id}
-                            className="group flex h-full flex-col overflow-hidden border border-neutral-200/80 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-amber-500/40 opacity-0 animate-fade-in-up"
+                            className="group flex h-full flex-col overflow-hidden border border-neutral-200/80 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00a0a3]/40 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-[#00a0a3]/40 opacity-0 animate-fade-in-up"
                             style={{
                                 animationDelay: `${150 + index * 100}ms`,
                                 animationFillMode: 'forwards'
                             }}
                         >
                             <CardHeader>
-                                <CardTitle className="text-lg transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
+                                <CardTitle className="text-lg transition-colors group-hover:text-[#00a0a3] dark:group-hover:text-cyan-400">
                                     {meal.name}
                                 </CardTitle>
                                 {meal.category && (

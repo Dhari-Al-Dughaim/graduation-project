@@ -70,9 +70,9 @@ export default function Payment({ order }: { order: Order }) {
         <StoreLayout title={t('pay_now')}>
             <div className="mx-auto max-w-lg">
                 <Card className="overflow-hidden">
-                    <CardHeader className="border-b bg-gradient-to-r from-amber-50 to-orange-50 dark:from-neutral-900 dark:to-neutral-800">
+                    <CardHeader className="border-b bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-neutral-900 dark:to-neutral-800">
                         <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-500 text-white">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00a0a3] text-white">
                                 <CreditCard className="h-5 w-5" />
                             </div>
                             <div>
@@ -119,7 +119,7 @@ export default function Payment({ order }: { order: Order }) {
 
                         <div className="flex items-center justify-between border-t pt-4 text-lg font-semibold">
                             <span>{t('total')}</span>
-                            <span className="text-amber-600 dark:text-amber-400">
+                            <span className="text-[#00a0a3] dark:text-cyan-400">
                                 {total.toFixed(2)} {t('currency_code')}
                             </span>
                         </div>
@@ -142,7 +142,7 @@ export default function Payment({ order }: { order: Order }) {
                                 type="submit"
                                 size="lg"
                                 disabled={processing}
-                                className="w-full bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:from-amber-600 hover:to-orange-600"
+                                className="w-full bg-gradient-to-r from-[#00a0a3] to-cyan-600 font-semibold text-white hover:from-[#00a0a3] hover:to-cyan-700"
                             >
                                 {processing ? (
                                     <>

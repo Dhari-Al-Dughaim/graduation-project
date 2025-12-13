@@ -50,7 +50,7 @@ export default function OrdersIndex({ orders }: { orders: { data: OrderListItem[
                                 <Button
                                     size="sm"
                                     variant="outline"
-                                    className="border-amber-300 text-xs font-medium text-amber-700 hover:bg-amber-50 dark:border-amber-500/60 dark:text-amber-300 dark:hover:bg-amber-900/40"
+                                    className="border-cyan-300 text-xs font-medium text-[#008789] hover:bg-cyan-50 dark:border-[#00a0a3]/60 dark:text-cyan-300 dark:hover:bg-cyan-900/40"
                                     onClick={() =>
                                         router.patch(
                                             `/admin/orders/${order.id}/status`,

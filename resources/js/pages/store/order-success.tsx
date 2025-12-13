@@ -114,7 +114,7 @@ export default function OrderSuccess({ order }: { order: Order }) {
                         {/* Order Details Grid */}
                         <div className="mb-6 grid gap-4 sm:grid-cols-2">
                             <div className="flex items-start gap-3 rounded-lg bg-neutral-50 p-4 dark:bg-neutral-800/50">
-                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100 text-[#00a0a3] dark:bg-cyan-900/30 dark:text-cyan-400">
                                     <Clock className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -157,7 +157,7 @@ export default function OrderSuccess({ order }: { order: Order }) {
                         {order.items && order.items.length > 0 && (
                             <div className="mb-6">
                                 <h3 className="mb-3 flex items-center gap-2 font-semibold text-neutral-900 dark:text-white">
-                                    <ShoppingBag className="h-5 w-5 text-amber-500" />
+                                    <ShoppingBag className="h-5 w-5 text-[#00a0a3]" />
                                     {t('order_items')}
                                 </h3>
                                 <div className="divide-y divide-neutral-200/50 rounded-lg border border-neutral-200/50 dark:divide-neutral-700/50 dark:border-neutral-700/50">
@@ -171,8 +171,8 @@ export default function OrderSuccess({ order }: { order: Order }) {
                                                 />
                                             )}
                                             {!item.meal?.image_url && (
-                                                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-900/30">
-                                                    <Package className="h-6 w-6 text-amber-600" />
+                                                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-100 dark:bg-cyan-900/30">
+                                                    <Package className="h-6 w-6 text-[#00a0a3]" />
                                                 </div>
                                             )}
                                             <div className="flex-1">
@@ -193,11 +193,11 @@ export default function OrderSuccess({ order }: { order: Order }) {
                         )}
 
                         {/* Total */}
-                        <div className="flex items-center justify-between rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 p-4 dark:from-amber-900/20 dark:to-orange-900/20">
+                        <div className="flex items-center justify-between rounded-lg bg-gradient-to-r from-cyan-50 to-teal-50 p-4 dark:from-cyan-900/20 dark:to-teal-900/20">
                             <span className="text-lg font-medium text-neutral-700 dark:text-neutral-300">
                                 {t('total')}
                             </span>
-                            <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                            <span className="text-2xl font-bold text-[#00a0a3] dark:text-cyan-400">
                                 {Number(order.total).toFixed(2)} {t('currency_code')}
                             </span>
                         </div>
@@ -208,7 +208,7 @@ export default function OrderSuccess({ order }: { order: Order }) {
                 <div className="flex flex-col gap-3 sm:flex-row">
                     <Button
                         asChild
-                        className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 py-6 text-base font-semibold text-white shadow-lg hover:from-amber-600 hover:to-orange-600"
+                        className="flex-1 bg-gradient-to-r from-[#00a0a3] to-cyan-600 py-6 text-base font-semibold text-white shadow-lg hover:from-[#008789] hover:to-cyan-700"
                     >
                         <Link href={`/orders/${order.id}/track`}>
                             <Package className="mr-2 h-5 w-5" />

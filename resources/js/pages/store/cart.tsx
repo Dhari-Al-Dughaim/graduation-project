@@ -15,7 +15,7 @@ export default function Cart() {
             <div className="mx-auto max-w-4xl">
                 {/* Header */}
                 <div className="mb-8 flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#00a0a3] to-cyan-600 text-white shadow-lg">
                         <ShoppingCart className="h-6 w-6" />
                     </div>
                     <div>
@@ -32,7 +32,7 @@ export default function Cart() {
                 {!cart.hydrated && (
                     <Card className="border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
                         <CardContent className="flex flex-col items-center justify-center py-16">
-                            <div className="h-12 w-12 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
+                            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#00a0a3] border-t-transparent" />
                             <p className="mt-4 text-muted-foreground">Loading your cart...</p>
                         </CardContent>
                     </Card>
@@ -42,8 +42,8 @@ export default function Cart() {
                 {cart.hydrated && cart.items.length === 0 && (
                     <Card className="border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
                         <CardContent className="flex flex-col items-center justify-center py-16">
-                            <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30">
-                                <ShoppingBag className="h-12 w-12 text-amber-500" />
+                            <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30">
+                                <ShoppingBag className="h-12 w-12 text-[#00a0a3]" />
                             </div>
                             <h2 className="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">
                                 {t('cart_empty_title')}
@@ -51,7 +51,7 @@ export default function Cart() {
                             <p className="mb-6 text-center text-muted-foreground">
                                 {t('cart_empty_description')}
                             </p>
-                            <Button asChild className="bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600">
+                            <Button asChild className="bg-gradient-to-r from-[#00a0a3] to-cyan-600 text-white hover:from-[#008789] hover:to-cyan-700">
                                 <Link href="/">
                                     <ShoppingBag className="mr-2 h-4 w-4" />
                                     {t('start_shopping')}
@@ -65,9 +65,9 @@ export default function Cart() {
                 {cart.hydrated && cart.items.length > 0 && (
                     <div className="space-y-6">
                         <Card className="overflow-hidden border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
-                            <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+                            <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-cyan-50/80 to-teal-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
                                 <CardTitle className="flex items-center gap-2 text-lg">
-                                    <ShoppingBag className="h-5 w-5 text-amber-600" />
+                                    <ShoppingBag className="h-5 w-5 text-[#00a0a3]" />
                                     {t('your_items')}
                                 </CardTitle>
                             </CardHeader>
@@ -75,7 +75,7 @@ export default function Cart() {
                                 {cart.items.map((item) => (
                                     <div
                                         key={item.meal_id}
-                                        className="group flex items-center gap-4 p-4 transition-colors hover:bg-amber-50/50 dark:hover:bg-amber-900/10"
+                                        className="group flex items-center gap-4 p-4 transition-colors hover:bg-cyan-50/50 dark:hover:bg-cyan-900/10"
                                     >
                                         {/* Product Image */}
                                         {item.image_url && (
@@ -88,8 +88,8 @@ export default function Cart() {
                                             </div>
                                         )}
                                         {!item.image_url && (
-                                            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30">
-                                                <ShoppingBag className="h-8 w-8 text-amber-500" />
+                                            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30">
+                                                <ShoppingBag className="h-8 w-8 text-[#00a0a3]" />
                                             </div>
                                         )}
 
@@ -98,7 +98,7 @@ export default function Cart() {
                                             <h3 className="font-semibold text-neutral-900 dark:text-white truncate">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-sm text-amber-600 dark:text-amber-400">
+                                            <p className="text-sm text-[#00a0a3] dark:text-cyan-400">
                                                 {item.price.toFixed(2)} {t('currency_code')}
                                             </p>
                                         </div>
@@ -108,7 +108,7 @@ export default function Cart() {
                                             <Button
                                                 variant="outline"
                                                 size="icon"
-                                                className="h-8 w-8 rounded-full border-neutral-300 hover:bg-amber-100 hover:text-amber-700 dark:border-neutral-600 dark:hover:bg-amber-900/30"
+                                                className="h-8 w-8 rounded-full border-neutral-300 hover:bg-cyan-100 hover:text-[#00a0a3] dark:border-neutral-600 dark:hover:bg-cyan-900/30"
                                                 onClick={() => cart.updateQuantity(item.meal_id, Math.max(1, item.quantity - 1))}
                                                 disabled={item.quantity <= 1}
                                             >
@@ -120,7 +120,7 @@ export default function Cart() {
                                             <Button
                                                 variant="outline"
                                                 size="icon"
-                                                className="h-8 w-8 rounded-full border-neutral-300 hover:bg-amber-100 hover:text-amber-700 dark:border-neutral-600 dark:hover:bg-amber-900/30"
+                                                className="h-8 w-8 rounded-full border-neutral-300 hover:bg-cyan-100 hover:text-[#00a0a3] dark:border-neutral-600 dark:hover:bg-cyan-900/30"
                                                 onClick={() => cart.updateQuantity(item.meal_id, item.quantity + 1)}
                                             >
                                                 <Plus className="h-4 w-4" />
@@ -150,11 +150,11 @@ export default function Cart() {
                         </Card>
 
                         {/* Order Summary */}
-                        <Card className="overflow-hidden border-0 bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-xl">
+                        <Card className="overflow-hidden border-0 bg-gradient-to-br from-[#00a0a3] to-cyan-600 text-white shadow-xl">
                             <CardContent className="p-6">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-amber-100">{t('order_total')}</p>
+                                        <p className="text-cyan-100">{t('order_total')}</p>
                                         <p className="text-3xl font-bold">
                                             {cart.total.toFixed(2)} {t('currency_code')}
                                         </p>
@@ -170,7 +170,7 @@ export default function Cart() {
                                         </Button>
                                         <Button
                                             asChild
-                                            className="bg-white text-amber-600 hover:bg-amber-50"
+                                            className="bg-white text-[#00a0a3] hover:bg-cyan-50"
                                         >
                                             <Link href="/checkout">
                                                 {t('checkout')}

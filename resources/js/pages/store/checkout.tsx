@@ -91,7 +91,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
             <div className="mx-auto max-w-6xl">
                 {/* Header */}
                 <div className="mb-8 flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#00a0a3] to-cyan-600 text-white shadow-lg">
                         <CreditCard className="h-6 w-6" />
                     </div>
                     <div>
@@ -110,16 +110,16 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                         <div className="lg:col-span-3 space-y-6">
                             {/* Contact Information */}
                             <Card className="overflow-hidden border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
-                                <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+                                <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-cyan-50/80 to-teal-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
                                     <CardTitle className="flex items-center gap-2 text-lg">
-                                        <User className="h-5 w-5 text-amber-600" />
+                                        <User className="h-5 w-5 text-[#00a0a3]" />
                                         {t('contact_information')}
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="grid gap-5 p-6 md:grid-cols-2">
                                     <div className="space-y-2">
                                         <Label htmlFor="customer.name" className="flex items-center gap-2 text-sm font-medium">
-                                            <User className="h-4 w-4 text-amber-500" />
+                                            <User className="h-4 w-4 text-[#00a0a3]" />
                                             {t('name')}
                                         </Label>
                                         <Input
@@ -131,13 +131,13 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                     name: e.target.value,
                                                 })
                                             }
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder={t('enter_your_name')}
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="customer.phone" className="flex items-center gap-2 text-sm font-medium">
-                                            <Phone className="h-4 w-4 text-amber-500" />
+                                            <Phone className="h-4 w-4 text-[#00a0a3]" />
                                             {t('phone')}
                                         </Label>
                                         <Input
@@ -149,13 +149,13 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                     phone: e.target.value,
                                                 })
                                             }
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder="+965 XXXX XXXX"
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="customer.email" className="flex items-center gap-2 text-sm font-medium">
-                                            <Mail className="h-4 w-4 text-amber-500" />
+                                            <Mail className="h-4 w-4 text-[#00a0a3]" />
                                             {t('email_address')}
                                         </Label>
                                         <Input
@@ -168,7 +168,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                     email: e.target.value,
                                                 })
                                             }
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder="you@example.com"
                                         />
                                     </div>
@@ -186,7 +186,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                     whatsapp_number: e.target.value,
                                                 })
                                             }
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder="+965 XXXX XXXX"
                                         />
                                     </div>
@@ -195,49 +195,49 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
 
                             {/* Delivery Information */}
                             <Card className="overflow-hidden border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
-                                <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+                                <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-cyan-50/80 to-teal-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
                                     <CardTitle className="flex items-center gap-2 text-lg">
-                                        <MapPin className="h-5 w-5 text-amber-600" />
+                                        <MapPin className="h-5 w-5 text-[#00a0a3]" />
                                         {t('delivery_information')}
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="grid gap-5 p-6 md:grid-cols-2">
                                     <div className="space-y-2 md:col-span-2">
                                         <Label htmlFor="delivery_address" className="flex items-center gap-2 text-sm font-medium">
-                                            <MapPin className="h-4 w-4 text-amber-500" />
+                                            <MapPin className="h-4 w-4 text-[#00a0a3]" />
                                             {t('address')}
                                         </Label>
                                         <Input
                                             id="delivery_address"
                                             value={form.data.delivery_address}
                                             onChange={(e) => form.setData('delivery_address', e.target.value)}
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder={t('enter_your_address')}
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="delivery_city" className="flex items-center gap-2 text-sm font-medium">
-                                            <Building2 className="h-4 w-4 text-amber-500" />
+                                            <Building2 className="h-4 w-4 text-[#00a0a3]" />
                                             {t('city')}
                                         </Label>
                                         <Input
                                             id="delivery_city"
                                             value={form.data.delivery_city}
                                             onChange={(e) => form.setData('delivery_city', e.target.value)}
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder={t('enter_city')}
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="delivery_notes" className="flex items-center gap-2 text-sm font-medium">
-                                            <FileText className="h-4 w-4 text-amber-500" />
+                                            <FileText className="h-4 w-4 text-[#00a0a3]" />
                                             {t('notes')}
                                         </Label>
                                         <Input
                                             id="delivery_notes"
                                             value={form.data.delivery_notes}
                                             onChange={(e) => form.setData('delivery_notes', e.target.value)}
-                                            className="border-neutral-300 bg-white/50 focus:border-amber-500 focus:ring-amber-500 dark:border-neutral-600 dark:bg-neutral-800/50"
+                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
                                             placeholder={t('special_instructions')}
                                         />
                                     </div>
@@ -250,9 +250,9 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                             <div className="sticky top-24 space-y-6">
                                 {orderItemsWithMeal.length > 0 && (
                                     <Card className="overflow-hidden border-0 bg-white/80 shadow-xl backdrop-blur-sm dark:bg-neutral-900/80">
-                                        <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+                                        <CardHeader className="border-b border-neutral-200/50 bg-gradient-to-r from-cyan-50/80 to-teal-50/80 dark:border-neutral-700/50 dark:from-neutral-800/80 dark:to-neutral-800/50">
                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                <ShoppingBag className="h-5 w-5 text-amber-600" />
+                                                <ShoppingBag className="h-5 w-5 text-[#00a0a3]" />
                                                 {t('order_summary')}
                                             </CardTitle>
                                         </CardHeader>
@@ -273,8 +273,8 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                             </div>
                                                         )}
                                                         {!item.meal.image_url && (
-                                                            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30">
-                                                                <ShoppingBag className="h-6 w-6 text-amber-500" />
+                                                            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30">
+                                                                <ShoppingBag className="h-6 w-6 text-[#00a0a3]" />
                                                             </div>
                                                         )}
                                                         <div className="flex-1 min-w-0">
@@ -282,7 +282,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                                 {item.meal.name}
                                                             </p>
                                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                                <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">
+                                                                <span className="inline-flex items-center rounded-full bg-cyan-100 px-2 py-0.5 text-xs font-medium text-[#00a0a3] dark:bg-cyan-900/50 dark:text-cyan-300">
                                                                     x{item.quantity}
                                                                 </span>
                                                                 <span>@ {Number(item.meal.price).toFixed(2)} {t('currency_code')}</span>
@@ -303,7 +303,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                                 <span className="text-lg font-medium text-muted-foreground">
                                                     {t('order_total')}
                                                 </span>
-                                                <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                                <span className="text-2xl font-bold text-[#00a0a3] dark:text-cyan-400">
                                                     {orderTotal.toFixed(2)} {t('currency_code')}
                                                 </span>
                                             </div>
@@ -311,7 +311,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                             <Button
                                                 type="submit"
                                                 disabled={form.processing}
-                                                className="w-full bg-gradient-to-r from-amber-500 to-orange-500 py-6 text-base font-semibold text-white shadow-lg transition-all hover:from-amber-600 hover:to-orange-600 hover:shadow-xl"
+                                                className="w-full bg-gradient-to-r from-[#00a0a3] to-cyan-600 py-6 text-base font-semibold text-white shadow-lg transition-all hover:from-[#008789] hover:to-cyan-700 hover:shadow-xl"
                                             >
                                                 {form.processing ? (
                                                     <>
@@ -356,8 +356,8 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
                         <div className="flex flex-col items-center gap-4 rounded-2xl bg-white p-8 shadow-2xl dark:bg-neutral-900">
                             <div className="relative">
-                                <div className="h-16 w-16 animate-spin rounded-full border-4 border-amber-200 border-t-amber-500" />
-                                <ShoppingBag className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-amber-500" />
+                                <div className="h-16 w-16 animate-spin rounded-full border-4 border-cyan-200 border-t-[#00a0a3]" />
+                                <ShoppingBag className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-[#00a0a3]" />
                             </div>
                             <p className="text-lg font-medium text-neutral-900 dark:text-white">
                                 {t('sending_burger_order')}

@@ -47,9 +47,9 @@ export function PageTransition({ children }: PropsWithChildren) {
                 <div className="relative flex flex-col items-center gap-4">
                     {/* Animated dots */}
                     <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500 animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500 animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500 animate-bounce" style={{ animationDelay: '300ms' }} />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#00a0a3] animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#00a0a3] animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#00a0a3] animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                 </div>
             </div>
