@@ -22,7 +22,6 @@ class SendOrderStatusWhatsAppNotification implements ShouldQueue
 
     public function handle(WhatsappService $whatsappService): void
     {
-        // Ensure customer relationship is loaded
         $this->order->loadMissing('customer');
 
         $phone = $this->order->whatsapp_number
@@ -33,29 +32,54 @@ class SendOrderStatusWhatsAppNotification implements ShouldQueue
             return;
         }
 
-        $message = $this->buildStatusMessage();
+        $trackingUrl = $this->getOrderTrackingUrl();
+        $message = $this->buildStatusMessage($trackingUrl);
 
         if ($message) {
-            $whatsappService->send($phone, $message);
+            $response = $whatsappService->send($phone, $message);
+
+            $this->logMessage($phone, $message, $trackingUrl, $response);
         }
     }
 
-    protected function buildStatusMessage(): ?string
+    protected function buildStatusMessage(string $trackingUrl): ?string
     {
-        $customerName = $this->order->customer?->name ?? 'Valued Customer';
+        $customerName = $this->order->customer?->name ?? 'there';
         $orderNumber = $this->order->order_number;
-        $trackingUrl = $this->getOrderTrackingUrl();
+        $statusLabel = $this->formatStatus($this->newStatus);
+        $oldStatusLabel = $this->oldStatus ? $this->formatStatus($this->oldStatus) : null;
 
-        return match ($this->newStatus) {
-            'pending' => $this->buildPendingMessage($customerName, $orderNumber, $trackingUrl),
-            'confirmed' => $this->buildConfirmedMessage($customerName, $orderNumber, $trackingUrl),
-            'preparing' => $this->buildPreparingMessage($customerName, $orderNumber, $trackingUrl),
-            'ready' => $this->buildReadyMessage($customerName, $orderNumber, $trackingUrl),
-            'out_for_delivery' => $this->buildOutForDeliveryMessage($customerName, $orderNumber, $trackingUrl),
-            'delivered' => $this->buildDeliveredMessage($customerName, $orderNumber, $trackingUrl),
-            'cancelled' => $this->buildCancelledMessage($customerName, $orderNumber),
-            default => null,
-        };
+        if (! $statusLabel) {
+            return null;
+        }
+
+        $emoji = $this->statusEmoji()[$this->newStatus] ?? 'ℹ️';
+        $total = number_format((float) $this->order->total, 2);
+        $currency = $this->order->currency ?? 'KWD';
+        $paymentStatus = $this->formatStatus($this->order->payment_status);
+
+        $intro = "{$emoji} Hi {$customerName}! We have an update on your order *#{$orderNumber}*.";
+        $statusLine = $oldStatusLabel
+            ? "Status: *{$oldStatusLabel}* ➜ *{$statusLabel}*"
+            : "Status: *{$statusLabel}*";
+
+        $statusNotes = $this->statusNotes()[$this->newStatus] ?? null;
+        $etaLine = $this->order->delivery_eta_minutes
+            ? "⏱️ ETA: about {$this->order->delivery_eta_minutes} minutes."
+            : null;
+
+        $lines = array_values(array_filter([
+            $intro,
+            $statusLine,
+            $statusNotes,
+            "💰 Total: {$total} {$currency}",
+            $paymentStatus ? "💳 Payment: *{$paymentStatus}*" : null,
+            $etaLine,
+            "📍 Track your order here:\n{$trackingUrl}",
+            "Need help? Just reply to this message and we'll assist right away. 🤝",
+        ]));
+
+        return implode("\n\n", $lines);
     }
 
     protected function getOrderTrackingUrl(): string
@@ -63,69 +87,63 @@ class SendOrderStatusWhatsAppNotification implements ShouldQueue
         return url("/orders/code/{$this->order->order_number}/track");
     }
 
-    protected function buildPendingMessage(string $customerName, string $orderNumber, string $trackingUrl): string
+    protected function formatStatus(?string $status): ?string
     {
-        return "🕐 Hello {$customerName}!\n\n"
-            . "Your order *#{$orderNumber}* is pending and awaiting confirmation.\n\n"
-            . "We'll notify you as soon as it's confirmed! 📋\n\n"
-            . "📍 Track your order here:\n{$trackingUrl}\n\n"
-            . "Thank you for your patience! 🙏";
+        return $status
+            ? ucwords(str_replace('_', ' ', $status))
+            : null;
     }
 
-    protected function buildConfirmedMessage(string $customerName, string $orderNumber, string $trackingUrl): string
+    /**
+     * @return array<string, string>
+     */
+    protected function statusEmoji(): array
     {
-        return "✅ Great news, {$customerName}!\n\n"
-            . "Your order *#{$orderNumber}* has been *confirmed*! 🎉\n\n"
-            . "Our team will start preparing it shortly.\n\n"
-            . "📍 Track your order here:\n{$trackingUrl}\n\n"
-            . "Thank you for choosing us! 💚";
+        return [
+            'pending' => '🕐',
+            'confirmed' => '✅',
+            'preparing' => '👨‍🍳',
+            'ready' => '📦',
+            'out_for_delivery' => '🛵',
+            'delivered' => '🎉',
+            'cancelled' => '😔',
+        ];
     }
 
-    protected function buildPreparingMessage(string $customerName, string $orderNumber, string $trackingUrl): string
+    /**
+     * @return array<string, string>
+     */
+    protected function statusNotes(): array
     {
-        return "👨‍🍳 Hello {$customerName}!\n\n"
-            . "Your order *#{$orderNumber}* is now being *prepared*! 🍳\n\n"
-            . "Our chefs are working on your delicious meal with love and care.\n\n"
-            . "📍 Track your order here:\n{$trackingUrl}\n\n"
-            . "It won't be long now! ⏰";
+        return [
+            'pending' => "We're reviewing your order and will confirm shortly. 📋",
+            'confirmed' => 'Your order is locked in and moving to the kitchen. 🎉',
+            'preparing' => 'Our chefs are crafting your meal with care. 🍳',
+            'ready' => "It's packed and queued for the driver. 🚦",
+            'out_for_delivery' => 'Your driver is en route. Keep an eye on live tracking! 🚗',
+            'delivered' => 'Hope you enjoy your meal! Share your feedback anytime. ⭐',
+            'cancelled' => 'If this was unexpected, reply here and we will help. 🙏',
+        ];
     }
 
-    protected function buildReadyMessage(string $customerName, string $orderNumber, string $trackingUrl): string
+    /**
+     * @param array<string, mixed>|null $response
+     */
+    protected function logMessage(string $phone, string $body, string $trackingUrl, ?array $response): void
     {
-        return "🎊 Exciting news, {$customerName}!\n\n"
-            . "Your order *#{$orderNumber}* is *ready*! 📦\n\n"
-            . "It's packed and waiting to be picked up for delivery.\n\n"
-            . "📍 Track your order here:\n{$trackingUrl}\n\n"
-            . "Almost there! 🚀";
-    }
+        $payload = [
+            'order_status' => $this->newStatus,
+            'old_status' => $this->oldStatus,
+            'tracking_url' => $trackingUrl,
+            'response' => $response,
+        ];
 
-    protected function buildOutForDeliveryMessage(string $customerName, string $orderNumber, string $trackingUrl): string
-    {
-        $eta = $this->order->delivery_eta_minutes;
-        $etaText = $eta ? "Estimated arrival: *{$eta} minutes* ⏱️" : "Your order will arrive soon!";
-
-        return "🚗 {$customerName}, your order is on the way!\n\n"
-            . "Order *#{$orderNumber}* is now *out for delivery*! 🛵\n\n"
-            . "{$etaText}\n\n"
-            . "📍 Track your order live here:\n{$trackingUrl}\n\n"
-            . "Get ready to enjoy your meal! 🍽️";
-    }
-
-    protected function buildDeliveredMessage(string $customerName, string $orderNumber, string $trackingUrl): string
-    {
-        return "🎉 Congratulations, {$customerName}!\n\n"
-            . "Your order *#{$orderNumber}* has been *delivered*! ✅\n\n"
-            . "We hope you enjoy your meal! 😋\n\n"
-            . "📍 View your order details here:\n{$trackingUrl}\n\n"
-            . "Thank you for ordering with us! We'd love to hear your feedback. ⭐\n\n"
-            . "See you again soon! 💚";
-    }
-
-    protected function buildCancelledMessage(string $customerName, string $orderNumber): string
-    {
-        return "😔 Hello {$customerName},\n\n"
-            . "We're sorry to inform you that your order *#{$orderNumber}* has been *cancelled*.\n\n"
-            . "If this was a mistake or you have any questions, please contact us and we'll be happy to help! 📞\n\n"
-            . "We hope to serve you again soon! 🙏";
+        $this->order->whatsappMessages()->create([
+            'direction' => 'outbound',
+            'type' => 'status_update',
+            'recipient' => $phone,
+            'body' => $body,
+            'payload' => $payload,
+        ]);
     }
 }

@@ -29,13 +29,35 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
+
+        // Keep customer contact info in sync
+        if ($user->relationLoaded('customer')) {
+            $user->customer?->fill([
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->mobile,
+                'whatsapp_number' => $user->mobile,
+            ])->save();
+        } else {
+            $customer = $user->customer;
+            if ($customer) {
+                $customer->update([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'phone' => $user->mobile,
+                    'whatsapp_number' => $user->mobile,
+                ]);
+            }
+        }
 
         return to_route('profile.edit');
     }

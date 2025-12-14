@@ -89,6 +89,25 @@ export default function Profile({
                                     />
                                 </div>
 
+                                <div className="grid gap-2">
+                                    <Label htmlFor="mobile">Mobile number</Label>
+
+                                    <Input
+                                        id="mobile"
+                                        className="mt-1 block w-full"
+                                        defaultValue={auth.user.mobile ?? ''}
+                                        name="mobile"
+                                        required
+                                        autoComplete="tel"
+                                        placeholder="+965 5000 0000"
+                                    />
+
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.mobile}
+                                    />
+                                </div>
+
                                 {mustVerifyEmail &&
                                     auth.user.email_verified_at === null && (
                                         <div>
