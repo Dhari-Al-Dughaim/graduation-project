@@ -36,21 +36,30 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $locale = $data['customer']['locale'] ?? app()->getLocale();
-        $whatsappNumber = $data['customer']['whatsapp_number'] ?? $data['customer']['phone'];
+        $locale = data_get($data, 'customer.locale', app()->getLocale());
+        $customerPhone = data_get($data, 'customer.phone');
+        $whatsappNumber = data_get($data, 'customer.whatsapp_number') ?? $customerPhone;
+        $phone = $customerPhone ?? $whatsappNumber;
+
+        $customerIdentifier = array_filter([
+            'email' => data_get($data, 'customer.email'),
+            'phone' => $phone,
+        ], fn ($value) => filled($value));
+
+        if (empty($customerIdentifier)) {
+            $customerIdentifier = ['name' => data_get($data, 'customer.name')];
+        }
 
         $customer = Customer::updateOrCreate(
+            $customerIdentifier,
             [
-                'email' => $data['customer']['email'] ?? null,
-                'phone' => $data['customer']['phone'],
-            ],
-            [
-                'name' => $data['customer']['name'],
+                'name' => data_get($data, 'customer.name'),
+                'phone' => $phone,
                 'preferred_locale' => $locale,
                 'whatsapp_number' => $whatsappNumber,
-                'address_line' => $data['delivery_address'] ?? null,
-                'city' => $data['delivery_city'] ?? null,
-                'notes' => $data['delivery_notes'] ?? null,
+                'address_line' => data_get($data, 'delivery_address'),
+                'city' => data_get($data, 'delivery_city'),
+                'notes' => data_get($data, 'delivery_notes'),
             ]
         );
 
@@ -62,9 +71,9 @@ class CheckoutController extends Controller
             'currency' => 'KWD',
             'locale' => $locale,
             'whatsapp_number' => $whatsappNumber,
-            'delivery_address' => $data['delivery_address'] ?? $customer->address_line,
-            'delivery_city' => $data['delivery_city'] ?? $customer->city,
-            'delivery_notes' => $data['delivery_notes'] ?? null,
+            'delivery_address' => data_get($data, 'delivery_address') ?? $customer->address_line,
+            'delivery_city' => data_get($data, 'delivery_city') ?? $customer->city,
+            'delivery_notes' => data_get($data, 'delivery_notes'),
             'tracking_code' => 'TRK-' . strtoupper(Str::random(10)),
         ]);
 

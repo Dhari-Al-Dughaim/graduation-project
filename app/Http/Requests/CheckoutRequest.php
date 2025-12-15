@@ -18,7 +18,7 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'customer.name' => ['required', 'string', 'max:255'],
-            'customer.phone' => ['required', 'string', 'max:50'],
+            'customer.phone' => ['nullable', 'string', 'max:50'],
             'customer.email' => ['nullable', 'email', 'max:255'],
             'customer.locale' => ['nullable', 'in:en,ar'],
             'customer.whatsapp_number' => ['nullable', 'string', 'max:50'],

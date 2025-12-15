@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 import { useForm, usePage } from '@inertiajs/react';
 import {
     User,
-    Phone,
     Mail,
     MessageCircle,
     MapPin,
@@ -38,7 +37,6 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
     const form = useForm({
         customer: {
             name: user?.name ?? '',
-            phone: user?.mobile ?? '',
             email: user?.email ?? '',
             whatsapp_number: user?.mobile ?? '',
             locale,
@@ -136,24 +134,6 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="customer.phone" className="flex items-center gap-2 text-sm font-medium">
-                                            <Phone className="h-4 w-4 text-[#00a0a3]" />
-                                            {t('phone')}
-                                        </Label>
-                                        <Input
-                                            id="customer.phone"
-                                            value={form.data.customer.phone}
-                                            onChange={(e) =>
-                                                form.setData('customer', {
-                                                    ...form.data.customer,
-                                                    phone: e.target.value,
-                                                })
-                                            }
-                                            className="border-neutral-300 bg-white/50 focus:border-[#00a0a3] focus:ring-[#00a0a3] dark:border-neutral-600 dark:bg-neutral-800/50"
-                                            placeholder="+965 XXXX XXXX"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
                                         <Label htmlFor="customer.email" className="flex items-center gap-2 text-sm font-medium">
                                             <Mail className="h-4 w-4 text-[#00a0a3]" />
                                             {t('email_address')}
@@ -172,7 +152,7 @@ export default function Checkout({ meals = [] }: { meals: MealOption[] }) {
                                             placeholder="you@example.com"
                                         />
                                     </div>
-                                    <div className="space-y-2">
+                                    <div className="space-y-2 md:col-span-2">
                                         <Label htmlFor="customer.whatsapp" className="flex items-center gap-2 text-sm font-medium">
                                             <MessageCircle className="h-4 w-4 text-green-500" />
                                             {t('whatsapp_number')}
