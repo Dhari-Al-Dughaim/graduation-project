@@ -19,7 +19,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 11.50,
-                'image_url' => 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Double Cheddar Stack',
@@ -29,7 +29,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 12.75,
-                'image_url' => 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Smokehouse BBQ Burger',
@@ -39,7 +39,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 12.95,
-                'image_url' => 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Jalapeño Crunch Burger',
@@ -49,7 +49,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 12.25,
-                'image_url' => 'https://images.unsplash.com/photo-1612874472278-5c1f9c67228c?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Truffle Mushroom Swiss',
@@ -59,7 +59,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 13.50,
-                'image_url' => 'https://images.unsplash.com/photo-1606756790138-261c9cde4000?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Blue Cheese & Onion Burger',
@@ -69,7 +69,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 13.00,
-                'image_url' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80',
             ],
             [
                 'name_en' => 'Black Angus Bacon Burger',
@@ -79,7 +79,7 @@ class MealSeeder extends Seeder
                 'category_en' => 'Beef Burgers',
                 'category_ar' => 'برغر لحم بقري',
                 'price' => 13.95,
-                'image_url' => 'https://images.unsplash.com/photo-1585238342028-9085c1bc1c63?auto=format&fit=crop&w=800&q=80',
+                'image_url' => 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80',
             ],
         ];
 

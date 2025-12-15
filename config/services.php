@@ -40,4 +40,8 @@ return [
         'instance_id' => env('ULTRAMSG_INSTANCE_ID', 'instance154826'),
     ],
 
+    'openai' => [
+        'key' => env('OPENAI_API_KEY'),
+    ],
+
 ];

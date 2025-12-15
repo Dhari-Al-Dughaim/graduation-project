@@ -20,6 +20,7 @@ import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { PropsWithChildren, useState } from 'react';
 import { logout } from '@/routes';
+import { SupportChat } from '@/components/support-chat';
 import { Menu, Home, Package, ShoppingCart, LogIn, UserPlus, ClipboardList, User, LayoutDashboard, LogOut } from 'lucide-react';
 
 interface StoreLayoutProps extends PropsWithChildren {
@@ -362,6 +363,8 @@ export function StoreLayout({ children, title }: StoreLayoutProps) {
             </Sheet>
 
             <main className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8">{children}</main>
+
+            <SupportChat />
         </div>
     );
 }
